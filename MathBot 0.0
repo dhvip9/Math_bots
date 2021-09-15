@@ -47,7 +47,7 @@ while True:
             else:
                 break
 
-                # -----------------------------
+        # -----------------------------
         # R.H.S Number
         raw_value2 = ""
         if opterator[0] in opt:
