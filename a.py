@@ -97,7 +97,7 @@ while True:
                         print(count, ". [ Write Here ]")
                         break
         # -----------------------------
-        # working of operation of Multipal
+        # working of operation of Multiple
         elif number_opt == 0:
             # Separate values and opterators
             numbers = [[], []]    # [0] for opterators, [1] for value
@@ -115,7 +115,7 @@ while True:
             opterator = numbers[0]
 
             # -----------------------------
-            # for multipal operations
+            # for multiple operations
             multi_operation = []
 
             raw_value1 = ""
@@ -131,7 +131,7 @@ while True:
             multi_operation.remove("=")
 
             # -----------------------------
-            # for working in multipal operations
+            # for working in multiple operations
             short_list = []
 
             index = 0
@@ -166,7 +166,7 @@ while True:
                         multi_operation.insert(0, ans)
                         index = 0
 
-                        # multiplication[*]
+                    # multiplication[*]
                 elif x == "*":
                     ans = int(short_list[0]) * int(short_list[2])
                     short_list.pop(0)
