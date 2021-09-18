@@ -1,15 +1,15 @@
 opt = ['+', '-', '*', 'x', '/', '^', '**', 'X', '_', '=', '(', ')', '[', ']', '%']   # | Opterators |
 single_opt = ['!']                                                                   # |    List    |
 
-print("| | | | | |     | | | | |   | | | | |")
-print("  | |     | |   | |         | |      ")
-print("  | |     | |   | | | |     | | | |  ")
-print("  | |     | |   | |         | |      ")
-print("| | | | | |     | | | | |   | | | | |")
-print("-------------------------------------------------")
-print(" | Wellcome! To [ DEE ], The World Of MATHS    | ")
-print(" | Exit from 'DEE' Write [ exit ] in Lower Case| ")
-print("-------------------------------------------------")
+print("""| | | | | |     | | | | |   | | | | |
+  | |     | |   | |         | |      
+  | |     | |   | | | |     | | | |  
+  | |     | |   | |         | |      
+| | | | | |     | | | | |   | | | | |""")
+print("""-------------------------------------------------
+ | Wellcome! To [ DEE ], The World Of MATHS    | 
+ | Exit from 'DEE' Write [ exit ] in Lower Case|
+-------------------------------------------------""")
 print("1 . [ write Here ]")
 count = 1  # for Sequence count
 
