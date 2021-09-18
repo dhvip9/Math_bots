@@ -17,9 +17,7 @@ while True:
     user_input = str(input(">> "))
     number_opt = 0
     for j in user_input:
-        if j in opt:
-            number_opt = 0
-        elif j in single_opt:
+        if j in single_opt:
             number_opt = 1
     # -----------------------------
     # for Exit
