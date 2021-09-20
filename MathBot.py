@@ -72,10 +72,10 @@ while True:
                     raw_value2 += reves_value2[reves_index]
                     reves_index -= 1
 
-                value = [int(raw_value1), int(raw_value2)]
+                value = [float(raw_value1), float(raw_value2)]
 
             else:
-                value = [int(raw_value1)]
+                value = [float(raw_value1)]
 
             # ------------------------------
             # working of operation of use_single
@@ -94,6 +94,7 @@ while True:
                     count += 1  # for Sequence count
                     print(count, ". [ Write Here ]")
                     break
+
         # -----------------------------
         # working of operation of Multipal
         elif number_opt == 0:
@@ -154,7 +155,7 @@ while True:
                         index = 0
                         print("| WARNING! :- Zero [0] Cannot Divisible Any Number |")
                     else:
-                        ans = int(short_list[0]) / int(short_list[2])
+                        ans = float(short_list[0]) / float(short_list[2])
                         short_list.pop(0)
                         short_list.pop(0)
                         short_list.pop(0)
@@ -166,7 +167,7 @@ while True:
 
                         # multiplication[*]
                 elif x == "*":
-                    ans = int(short_list[0]) * int(short_list[2])
+                    ans = float(short_list[0]) * float(short_list[2])
                     short_list.pop(0)
                     short_list.pop(0)
                     short_list.pop(0)
@@ -178,7 +179,7 @@ while True:
 
                     # power or exponent[^]
                 elif x == "^" or x == "**":
-                    ans = int(short_list[0]) ** int(short_list[2])
+                    ans = float(short_list[0]) ** float(short_list[2])
                     short_list.pop(0)
                     short_list.pop(0)
                     short_list.pop(0)
@@ -190,7 +191,7 @@ while True:
 
                     # Addition[+]
                 elif x == "+":
-                    ans = int(short_list[0]) + int(short_list[2])
+                    ans = float(short_list[0]) + float(short_list[2])
                     short_list.pop(0)
                     short_list.pop(0)
                     short_list.pop(0)
@@ -202,7 +203,7 @@ while True:
 
                 # Subtraction[-]
                 elif x == "-":
-                    ans = int(short_list[0]) - int(short_list[2])
+                    ans = float(short_list[0]) - float(short_list[2])
                     short_list.pop(0)
                     short_list.pop(0)
                     short_list.pop(0)
