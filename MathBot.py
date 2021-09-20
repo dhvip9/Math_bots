@@ -81,8 +81,72 @@ while True:
             # working of operation of use_single
             while True:
 
+                # Addition[+]
+                if opterator[0] == "+":
+                    final_value_add = value[0] + value[1]
+                    print("=", final_value_add)
+                    print()
+                    count += 1  # for Sequence count
+                    print(count, ". [ Write Here ]")
+                    break
+
+                    # Subtraction[-]
+                elif opterator[0] == "-":
+                    final_value_sub = value[0] - value[1]
+                    print("=", final_value_sub)
+                    print()
+                    count += 1  # for Sequence count
+                    print(count, ". [ Write Here ]")
+                    break
+
+                elif opterator[0] == "_":
+                    print("| WARNING! :- Use this [ - ]            |")
+                    print("| NOTE :- Write only operator not Number|")
+                    opterator[0] = str(input("]> "))
+
+                    # multiplication[*]
+                elif opterator[0] == "*" or opterator[0] == "x":
+                    final_value_multi = value[0] * value[1]
+                    print("=", final_value_multi)
+                    print()
+                    count += 1  # for Sequence count
+                    print(count, ". [ Write Here ]")
+                    break
+
+                elif opterator[0] == "X":
+                    print("| WARNING! :- Use [*] or Lower Case [x] |")
+                    print("| NOTE :- Write only operator not Number|")
+                    opterator[0] = str(input("]> "))
+
+                    # Division[/]
+                elif opterator[0] == "/":
+                    if value[1] == 0 or (value[0] == 0 and value[1] == 0):
+                        final_value_div = 0
+                        print("=", final_value_div)
+                        print("| WARNING! :- Zero [0] Cannot Divisible Any Number |")
+                        print()
+                        count += 1  # for Sequence count
+                        print(count, ". [ Write Here ]")
+                        break
+                    else:
+                        final_value_div = value[0] / value[1]
+                        print("=", final_value_div)
+                        print()
+                        count += 1  # for Sequence count
+                        print(count, ". [ Write Here ]")
+                        break
+
+                    # power or exponent[^]
+                elif opterator[0] == "^" or opterator[0] == "**":
+                    final_value_pow = value[0] ** value[1]
+                    print("=", final_value_pow)
+                    print()
+                    count += 1  # for Sequence count
+                    print(count, ". [ Write Here ]")
+                    break
+
                 # factorial[!]
-                if opterator[0] == "!":
+                elif opterator[0] == "!":
                     f = 1
                     value_copy = value[0]
                     final_value_fac = value[0]
