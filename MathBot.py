@@ -1,6 +1,7 @@
 opt = ['+', '-', '*', 'x', '/', '^', '**', 'X', '_', '=', '(', ')', '[', ']', '%']   # | Operation  |
 single_opt = ['!']                                                                   # |    List    |
 opt_1 = ['+', '-', '*', '**']
+count = 1  # for Sequence count
 
 print("""| | | | | |     | | | | |   | | | | |
   | |     | |   | |         | |      
@@ -11,10 +12,9 @@ print("""-------------------------------------------------
  | Welcome! To [ DEE ], The World Of MATHS    | 
  | Exit from 'DEE' Write [ exit ] in Lower Case|
 -------------------------------------------------""")
-print("1 . [ write Here ]")
-count = 1  # for Sequence count
 
 while True:
+    print(count, ". [ Write Here ]")
     user_input = str(input(">> "))
     ans = 0
     number_opt = 0
@@ -214,7 +214,5 @@ while True:
                         bodmas_list = ['0', '0', '0']
                         break
 
-            print("=", ans)
-            print()
+            print("=", ans, "\n")
             count += 1  # for Sequence count
-            print(count, ". [ Write Here ]")
