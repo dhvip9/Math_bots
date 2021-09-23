@@ -1,4 +1,4 @@
-opt = ['+', '-', '*', 'x', '/', '^', '**', 'X', '_', '=', '(', ')', '[', ']', '%']   # | Opterators |
+opt = ['+', '-', '*', 'x', '/', '^', '**', 'X', '_', '=', '(', ')', '[', ']', '%']   # | Operation  |
 single_opt = ['!']                                                                   # |    List    |
 opt_1 = ['+', '-', '*', '**']
 
@@ -8,7 +8,7 @@ print("""| | | | | |     | | | | |   | | | | |
   | |     | |   | |         | |      
 | | | | | |     | | | | |   | | | | |""")
 print("""-------------------------------------------------
- | Wellcome! To [ DEE ], The World Of MATHS    | 
+ | Welcome! To [ DEE ], The World Of MATHS    | 
  | Exit from 'DEE' Write [ exit ] in Lower Case|
 -------------------------------------------------""")
 print("1 . [ write Here ]")
@@ -44,7 +44,7 @@ while True:
                 else:
                     numbers[1].append(i)
 
-            opterator = numbers[0]
+            operator = numbers[0]
 
             # -----------------------------
             # for combine value in single operations
@@ -60,7 +60,7 @@ while True:
             # for single operation in use
             while True:
                 # factorial[!]
-                if opterator[0] == "!":
+                if operator[0] == "!":
                     f = 1
                     value_copy = value
                     final_value_fac = value
@@ -89,7 +89,7 @@ while True:
                 else:
                     numbers[1].append(i)
             numbers[-1].append("=")
-            opterator = numbers[0]
+            operator = numbers[0]
 
             # -----------------------------
             # for combine value in multi operations
@@ -111,43 +111,43 @@ while True:
             # for BODMAS
             bodmas_list = ['0', '0', '0']
             break_out_flag = False
-            for _ in opterator:
+            for _ in operator:
                 # for 0 divisible error
                 if break_out_flag:
                     break
 
                 # for sorting raw operation
-                raw_sort_operater = []
+                raw_sort_operator = []
                 for a in multi_operation:
                     if a in opt_1:
-                        raw_sort_operater.append(a)
+                        raw_sort_operator.append(a)
                     elif a == "/":
-                        raw_sort_operater.append("%")
+                        raw_sort_operator.append("%")
                     elif a == "x":
-                        raw_sort_operater.append("*")
+                        raw_sort_operator.append("*")
                     elif a == "^":
-                        raw_sort_operater.append("**")
+                        raw_sort_operator.append("**")
 
                 # for index of operation
-                index_operater = []
+                index_operator = []
                 for a in multi_operation:
                     if a in opt:
-                        index_operater.append(multi_operation.index(a))
+                        index_operator.append(multi_operation.index(a))
 
-                index_operater = [x for _, x in sorted(zip(raw_sort_operater, index_operater))]
-                raw_sort_operater.sort()
+                index_operator = [x for _, x in sorted(zip(raw_sort_operator, index_operator))]
+                raw_sort_operator.sort()
 
                 # for replace word[% to /]
-                sort_operater = []
-                for j in raw_sort_operater:
+                sort_operator = []
+                for j in raw_sort_operator:
                     if j in opt_1:
-                        sort_operater.append(j)
+                        sort_operator.append(j)
                     if j == "%":
-                        sort_operater.append("/")
+                        sort_operator.append("/")
 
                 # -----------------------------
                 # for multi operation in use
-                for x, i in zip(index_operater, sort_operater):
+                for x, i in zip(index_operator, sort_operator):
                     bodmas_list[0] = multi_operation[x - 1]
                     bodmas_list[1] = multi_operation[x]
                     bodmas_list[2] = multi_operation[1 + x]
