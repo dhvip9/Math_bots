@@ -1,17 +1,10 @@
+import Logo_Info
 opt = ['+', '-', '*', 'x', '/', '^', '**', 'X', '_', '=', '(', ')', '[', ']', '%']   # | Operation  |
 single_opt = ['!']                                                                   # |    List    |
 opt_1 = ['+', '-', '*', '**']
 count = 1  # for Sequence count
 
-print("""| | | | | |     | | | | |   | | | | |
-  | |     | |   | |         | |      
-  | |     | |   | | | |     | | | |  
-  | |     | |   | |         | |      
-| | | | | |     | | | | |   | | | | |""")
-print("""-------------------------------------------------
- | Welcome! To [ DEE ], The World Of MATHS    | 
- | Exit from 'DEE' Write [ exit ] in Lower Case|
--------------------------------------------------""")
+Logo_Info.logo()
 
 while True:
     print(count, ". [ Write Here ]")
