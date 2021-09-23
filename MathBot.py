@@ -1,5 +1,6 @@
 opt = ['+', '-', '*', 'x', '/', '^', '**', 'X', '_', '=', '(', ')', '[', ']', '%']   # | Opterators |
 single_opt = ['!']                                                                   # |    List    |
+opt_1 = ['+', '-', '*', '**']
 
 print("""| | | | | |     | | | | |   | | | | |
   | |     | |   | |         | |      
@@ -15,6 +16,7 @@ count = 1  # for Sequence count
 
 while True:
     user_input = str(input(">> "))
+    ans = 0
     number_opt = 0
     for j in user_input:
         if j in single_opt:
@@ -81,72 +83,8 @@ while True:
             # working of operation of use_single
             while True:
 
-                # Addition[+]
-                if opterator[0] == "+":
-                    final_value_add = value[0] + value[1]
-                    print("=", final_value_add)
-                    print()
-                    count += 1  # for Sequence count
-                    print(count, ". [ Write Here ]")
-                    break
-
-                    # Subtraction[-]
-                elif opterator[0] == "-":
-                    final_value_sub = value[0] - value[1]
-                    print("=", final_value_sub)
-                    print()
-                    count += 1  # for Sequence count
-                    print(count, ". [ Write Here ]")
-                    break
-
-                elif opterator[0] == "_":
-                    print("| WARNING! :- Use this [ - ]            |")
-                    print("| NOTE :- Write only operator not Number|")
-                    opterator[0] = str(input("]> "))
-
-                    # multiplication[*]
-                elif opterator[0] == "*" or opterator[0] == "x":
-                    final_value_multi = value[0] * value[1]
-                    print("=", final_value_multi)
-                    print()
-                    count += 1  # for Sequence count
-                    print(count, ". [ Write Here ]")
-                    break
-
-                elif opterator[0] == "X":
-                    print("| WARNING! :- Use [*] or Lower Case [x] |")
-                    print("| NOTE :- Write only operator not Number|")
-                    opterator[0] = str(input("]> "))
-
-                    # Division[/]
-                elif opterator[0] == "/":
-                    if value[1] == 0 or (value[0] == 0 and value[1] == 0):
-                        final_value_div = 0
-                        print("=", final_value_div)
-                        print("| WARNING! :- Zero [0] Cannot Divisible Any Number |")
-                        print()
-                        count += 1  # for Sequence count
-                        print(count, ". [ Write Here ]")
-                        break
-                    else:
-                        final_value_div = value[0] / value[1]
-                        print("=", final_value_div)
-                        print()
-                        count += 1  # for Sequence count
-                        print(count, ". [ Write Here ]")
-                        break
-
-                    # power or exponent[^]
-                elif opterator[0] == "^" or opterator[0] == "**":
-                    final_value_pow = value[0] ** value[1]
-                    print("=", final_value_pow)
-                    print()
-                    count += 1  # for Sequence count
-                    print(count, ". [ Write Here ]")
-                    break
-
                 # factorial[!]
-                elif opterator[0] == "!":
+                if opterator[0] == "!":
                     f = 1
                     value_copy = value[0]
                     final_value_fac = value[0]
@@ -178,7 +116,7 @@ while True:
             opterator = numbers[0]
 
             # -----------------------------
-            # for multipal operations
+            # for multi operations
             multi_operation = []
 
             raw_value1 = ""
@@ -194,90 +132,119 @@ while True:
             multi_operation.remove("=")
 
             # -----------------------------
-            # for working in multipal operations
-            short_list = []
+            # for BODMAS
+            bodmas_list = ['0', '0', '0']
+            break_out_flag = False
+            for _ in opterator:
+                # for 0 divisible error
+                if break_out_flag:
+                    break
 
-            index = 0
-            length_list = len(multi_operation)
-            for x in opterator:
-                for i in multi_operation:
-                    if index <= 2:
-                        short_list.append(i)
-                    index += 1
+                # for sorting raw operation
+                raw_sort_operater = []
+                for a in multi_operation:
+                    if a in opt_1:
+                        raw_sort_operater.append(a)
+                    elif a == "/":
+                        raw_sort_operater.append("%")
+                    elif a == "x":
+                        raw_sort_operater.append("*")
+                    elif a == "^":
+                        raw_sort_operater.append("**")
+
+                # for index of operater
+                index_operater = []
+                for a in multi_operation:
+                    if a in opt:
+                        index_operater.append(multi_operation.index(a))
+
+                index_operater = [x for _, x in sorted(zip(raw_sort_operater, index_operater))]
+                raw_sort_operater.sort()
+
+                # for replace word[% to /]
+                sort_operater = []
+                for j in raw_sort_operater:
+                    if j in opt_1:
+                        sort_operater.append(j)
+                    if j == "%":
+                        sort_operater.append("/")
+
+                # -----------------------------
+                # for multi operation in use
+                for x, i in zip(index_operater, sort_operater):
+                    bodmas_list[0] = multi_operation[x - 1]
+                    bodmas_list[1] = multi_operation[x]
+                    bodmas_list[2] = multi_operation[1 + x]
 
                     # Division[/]
-                if x == "/":
-                    if short_list[2] == "0" or short_list[2] == "0 " or short_list[2] == " 0" or short_list[2] == " 0 ":
-                        ans = 0
-                        short_list.pop(0)
-                        short_list.pop(0)
-                        short_list.pop(0)
-                        multi_operation.pop(0)
-                        multi_operation.pop(0)
-                        multi_operation.pop(0)
-                        multi_operation.insert(0, ans)
-                        index = 0
-                        print("| WARNING! :- Zero [0] Cannot Divisible Any Number |")
-                    else:
-                        ans = float(short_list[0]) / float(short_list[2])
-                        short_list.pop(0)
-                        short_list.pop(0)
-                        short_list.pop(0)
-                        multi_operation.pop(0)
-                        multi_operation.pop(0)
-                        multi_operation.pop(0)
-                        multi_operation.insert(0, ans)
-                        index = 0
+                    if i == "/":
+                        if bodmas_list[2] == "0" or bodmas_list[2] == "0 " or \
+                                bodmas_list[2] == " 0" or bodmas_list[2] == " 0 ":
+                            ans = 0
+                            print("| WARNING! :- Zero [0] Cannot Divisible Any Number |")
+                            break_out_flag = True
+                            multi_operation[x - 1] = " "
+                            multi_operation[x] = ans
+                            multi_operation[1 + x] = " "
+                            multi_operation.remove(" ")
+                            multi_operation.remove(" ")
+                            bodmas_list = ['0', '0', '0']
+                            break
+                        else:
+                            ans = float(bodmas_list[0]) / float(bodmas_list[2])
+                            multi_operation[x - 1] = " "
+                            multi_operation[x] = ans
+                            multi_operation[1 + x] = " "
+                            multi_operation.remove(" ")
+                            multi_operation.remove(" ")
+                            bodmas_list = ['0', '0', '0']
+                            break
 
-                        # multiplication[*]
-                elif x == "*":
-                    ans = float(short_list[0]) * float(short_list[2])
-                    short_list.pop(0)
-                    short_list.pop(0)
-                    short_list.pop(0)
-                    multi_operation.pop(0)
-                    multi_operation.pop(0)
-                    multi_operation.pop(0)
-                    multi_operation.insert(0, ans)
-                    index = 0
+                    # multiplication[*]
+                    elif i == "*" or i == "x":
+                        ans = float(bodmas_list[0]) * float(bodmas_list[2])
+                        multi_operation[x - 1] = " "
+                        multi_operation[x] = ans
+                        multi_operation[1 + x] = " "
+                        multi_operation.remove(" ")
+                        multi_operation.remove(" ")
+                        bodmas_list = ['0', '0', '0']
+                        break
 
                     # power or exponent[^]
-                elif x == "^" or x == "**":
-                    ans = float(short_list[0]) ** float(short_list[2])
-                    short_list.pop(0)
-                    short_list.pop(0)
-                    short_list.pop(0)
-                    multi_operation.pop(0)
-                    multi_operation.pop(0)
-                    multi_operation.pop(0)
-                    multi_operation.insert(0, ans)
-                    index = 0
+                    elif i == "^" or i == "**":
+                        ans = float(bodmas_list[0]) ** float(bodmas_list[2])
+                        multi_operation[x - 1] = " "
+                        multi_operation[x] = ans
+                        multi_operation[1 + x] = " "
+                        multi_operation.remove(" ")
+                        multi_operation.remove(" ")
+                        bodmas_list = ['0', '0', '0']
+                        break
 
                     # Addition[+]
-                elif x == "+":
-                    ans = float(short_list[0]) + float(short_list[2])
-                    short_list.pop(0)
-                    short_list.pop(0)
-                    short_list.pop(0)
-                    multi_operation.pop(0)
-                    multi_operation.pop(0)
-                    multi_operation.pop(0)
-                    multi_operation.insert(0, ans)
-                    index = 0
+                    elif i == "+":
+                        ans = float(bodmas_list[0]) + float(bodmas_list[2])
+                        multi_operation[x - 1] = " "
+                        multi_operation[x] = ans
+                        multi_operation[1 + x] = " "
+                        multi_operation.remove(" ")
+                        multi_operation.remove(" ")
+                        bodmas_list = ['0', '0', '0']
+                        break
 
-                # Subtraction[-]
-                elif x == "-":
-                    ans = float(short_list[0]) - float(short_list[2])
-                    short_list.pop(0)
-                    short_list.pop(0)
-                    short_list.pop(0)
-                    multi_operation.pop(0)
-                    multi_operation.pop(0)
-                    multi_operation.pop(0)
-                    multi_operation.insert(0, ans)
-                    index = 0
+                    # Subtraction[-]
+                    elif i == "-":
+                        ans = float(bodmas_list[0]) - float(bodmas_list[2])
+                        multi_operation[x - 1] = " "
+                        multi_operation[x] = ans
+                        multi_operation[1 + x] = " "
+                        multi_operation.remove(" ")
+                        multi_operation.remove(" ")
+                        bodmas_list = ['0', '0', '0']
+                        break
 
-            print("=", multi_operation[0])
+            print("=", ans)
             print()
             count += 1  # for Sequence count
             print(count, ". [ Write Here ]")
