@@ -21,6 +21,7 @@ while True:
     for j in user_input:
         if j in single_opt:
             number_opt = 1
+
     # -----------------------------
     # for Exit
     if user_input == "exit":
@@ -28,10 +29,10 @@ while True:
         break
     else:
         # -----------------------------
-        # working of operation of single
+        # working of operation for single
         if number_opt == 1:
-            # Separate values and opterators
-            numbers = [[], []]    # [0] for opterators, [1] for value
+            # Separate values and operation
+            numbers = [[], []]    # [0] for operation, [1] for value
             for i in user_input:
                 if i in single_opt:
                     numbers[0].append(i)
@@ -44,50 +45,25 @@ while True:
                     numbers[1].append(i)
 
             opterator = numbers[0]
+
             # -----------------------------
-            # working of operation of single
-            # L.H.S. Number
+            # for combine value in single operations
             raw_value1 = ""
             for i in numbers[1]:
                 if i != " ":
                     raw_value1 += i
                 else:
                     break
-
-            # -----------------------------
-            # R.H.S Number
-            raw_value2 = ""
-            if opterator[0] in opt:
-                rhs_num = numbers[1]
-                reves_value2 = ""
-                index = -1
-                reves_index = -1
-
-                for j in reversed(rhs_num):
-                    if j != " ":
-                        reves_value2 += rhs_num[index]
-                        index -= 1
-                    else:
-                        break
-
-                for i in reves_value2:
-                    raw_value2 += reves_value2[reves_index]
-                    reves_index -= 1
-
-                value = [float(raw_value1), float(raw_value2)]
-
-            else:
-                value = [float(raw_value1)]
+            value = float(raw_value1)
 
             # ------------------------------
-            # working of operation of use_single
+            # for single operation in use
             while True:
-
                 # factorial[!]
                 if opterator[0] == "!":
                     f = 1
-                    value_copy = value[0]
-                    final_value_fac = value[0]
+                    value_copy = value
+                    final_value_fac = value
                     while f < value_copy:
                         final_value_fac = final_value_fac * f
                         f += 1
@@ -98,10 +74,10 @@ while True:
                     break
 
         # -----------------------------
-        # working of operation of Multipal
+        # working of operation for Multi
         elif number_opt == 0:
-            # Separate values and opterators
-            numbers = [[], []]    # [0] for opterators, [1] for value
+            # Separate values and operation
+            numbers = [[], []]    # [0] for operation, [1] for value
             for i in user_input:
                 if i in single_opt:
                     numbers[0].append(i)
@@ -116,7 +92,7 @@ while True:
             opterator = numbers[0]
 
             # -----------------------------
-            # for multi operations
+            # for combine value in multi operations
             multi_operation = []
 
             raw_value1 = ""
@@ -152,7 +128,7 @@ while True:
                     elif a == "^":
                         raw_sort_operater.append("**")
 
-                # for index of operater
+                # for index of operation
                 index_operater = []
                 for a in multi_operation:
                     if a in opt:
