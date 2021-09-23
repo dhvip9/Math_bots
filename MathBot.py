@@ -183,12 +183,6 @@ while True:
                             ans = 0
                             print("| WARNING! :- Zero [0] Cannot Divisible Any Number |")
                             break_out_flag = True
-                            multi_operation[x - 1] = " "
-                            multi_operation[x] = ans
-                            multi_operation[1 + x] = " "
-                            multi_operation.remove(" ")
-                            multi_operation.remove(" ")
-                            bodmas_list = ['0', '0', '0']
                             break
                         else:
                             ans = float(bodmas_list[0]) / float(bodmas_list[2])
