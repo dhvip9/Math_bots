@@ -1,7 +1,4 @@
 import Logo_Info
-opt = ['+', '-', '*', 'x', '/', '^', '**', 'X', '_', '=', '(', ')', '[', ']', '%']   # | Operation  |
-single_opt = ['!']                                                                   # |    List    |
-opt_1 = ['+', '-', '*', '**']
 count = 1  # for Sequence count
 
 Logo_Info.logo()
@@ -12,7 +9,7 @@ while True:
     ans = 0
     number_opt = 0
     for j in user_input:
-        if j in single_opt:
+        if j in Logo_Info.single_opt:
             number_opt = 1
 
     # -----------------------------
@@ -27,12 +24,11 @@ while True:
             # Separate values and operation
             numbers = [[], []]    # [0] for operation, [1] for value
             for i in user_input:
-                if i in single_opt:
+                if i in Logo_Info.single_opt:
                     numbers[0].append(i)
 
-                elif i in opt:
+                elif i in Logo_Info.opt:
                     numbers[0].append(i)
-                    numbers[1].append(" ")
 
                 else:
                     numbers[1].append(i)
@@ -43,7 +39,7 @@ while True:
             # for combine value in single operations
             raw_value1 = ""
             for i in numbers[1]:
-                if i != " ":
+                if i not in Logo_Info.single_opt:
                     raw_value1 += i
                 else:
                     break
@@ -63,19 +59,18 @@ while True:
                     print("=", final_value_fac)
                     print()
                     count += 1  # for Sequence count
-                    print(count, ". [ Write Here ]")
                     break
 
         # -----------------------------
         # working of operation for Multi
         elif number_opt == 0:
-            # Separate values and operation
+            # Separate values and operation for multi
             numbers = [[], []]    # [0] for operation, [1] for value
             for i in user_input:
-                if i in single_opt:
+                if i in Logo_Info.single_opt:
                     numbers[0].append(i)
 
-                elif i in opt:
+                elif i in Logo_Info.opt:
                     numbers[0].append(i)
                     numbers[1].append(i)
 
@@ -91,7 +86,7 @@ while True:
             raw_value1 = ""
 
             for i in numbers[1]:
-                if i not in opt:
+                if i not in Logo_Info.opt:
                     raw_value1 += i
 
                 else:
@@ -112,7 +107,7 @@ while True:
                 # for sorting raw operation
                 raw_sort_operator = []
                 for a in multi_operation:
-                    if a in opt_1:
+                    if a in Logo_Info.opt_1:
                         raw_sort_operator.append(a)
                     elif a == "/":
                         raw_sort_operator.append("%")
@@ -124,7 +119,7 @@ while True:
                 # for index of operation
                 index_operator = []
                 for a in multi_operation:
-                    if a in opt:
+                    if a in Logo_Info.opt:
                         index_operator.append(multi_operation.index(a))
 
                 index_operator = [x for _, x in sorted(zip(raw_sort_operator, index_operator))]
@@ -133,7 +128,7 @@ while True:
                 # for replace word[% to /]
                 sort_operator = []
                 for j in raw_sort_operator:
-                    if j in opt_1:
+                    if j in Logo_Info.opt_1:
                         sort_operator.append(j)
                     if j == "%":
                         sort_operator.append("/")
