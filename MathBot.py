@@ -1,4 +1,6 @@
 import Logo_Info
+import Working_note
+
 count = 1  # for Sequence count
 
 Logo_Info.logo()
@@ -85,7 +87,7 @@ while True:
 
             raw_value1 = ""
 
-            for i in numbers[1]:
+            for i in Working_note.raw_equation():
                 if i not in Logo_Info.opt:
                     raw_value1 += i
 
@@ -99,7 +101,7 @@ while True:
             # for BODMAS
             bodmas_list = ['0', '0', '0']
             break_out_flag = False
-            for _ in operator:
+            for _ in Working_note.operator():
                 # for 0 divisible error
                 if break_out_flag:
                     break
